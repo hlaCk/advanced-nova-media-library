@@ -224,13 +224,10 @@ class Media extends Field
             })->map(function ($file, int $index) use ($request, $model, $collection, $requestAttribute) {
                 if ($file instanceof UploadedFile) {
                     $media = $model->addMedia($file)->withCustomProperties($this->customProperties);
-
                     $fileName = $file->getClientOriginalName();
                     $fileExtension = $file->getClientOriginalExtension();
-
                 } else {
                     $media = $this->makeMediaFromVaporUpload($file, $model);
-
                     $fileName = $file['file_name'];
                     $fileExtension = pathinfo($file['file_name'], PATHINFO_EXTENSION);
                 }
@@ -386,12 +383,9 @@ class Media extends Field
      */
     private function makeMediaFromVaporUpload(array $file, HasMedia $model): FileAdder
     {
-        $disk = config('filesystems.default');
-
-        $disk = config('filesystems.disks.' . $disk . 'driver') === 's3' ? $disk : 's3';
-
+        $diskName = config('filesystems.default');
+        $disk = config('filesystems.disks.' . $diskName . 'driver') === 's3' ? $diskName : 's3';
         $url = Storage::disk($disk)->temporaryUrl($file['key'], Carbon::now()->addHour());
-
         return $model->addMediaFromUrl($url)
             ->usingFilename($file['file_name'])
             ->withCustomProperties($this->customProperties);
