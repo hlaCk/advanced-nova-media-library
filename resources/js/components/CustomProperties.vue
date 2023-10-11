@@ -14,6 +14,7 @@
   import get from 'lodash/get'
   import set from 'lodash/set'
 
+
   export default {
     props: {
       modelValue: {
@@ -25,7 +26,6 @@
         required: true,
       },
     },
-
     components: {
       CustomPropertiesModal,
     },
@@ -69,3 +69,4 @@
     },
   }
 </script>
+

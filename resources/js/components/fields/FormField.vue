@@ -56,7 +56,6 @@
       FullWidthField,
       ExistingMedia,
     },
-
     props: ['resourceName', 'resourceId', 'field'],
 
     data() {

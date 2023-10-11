@@ -192,7 +192,7 @@ Images::make('Gallery')->croppable(false);
 
 You can set all configurations like ratio e.g. as following: 
 ```php
-Images::make('Gallery')->croppingConfigs(['ratio' => 4/3]);
+Images::make('Gallery')->croppingConfigs(['aspectRatio' => 4/3]);
 ```
 Available cropping configuration, see https://github.com/timtnleeProject/vuejs-clipper#clipper-basic.
 
@@ -322,3 +322,15 @@ Files::make('Multiple files', 'multiple_files')
 - Replaced [vuejs-clipper](https://www.npmjs.com/package/vuejs-clipper) with [vue-advanced-cropper](https://www.npmjs.com/package/vue-advanced-cropper) for vue3 support
 
 Full change log in [PR #317](https://github.com/ebess/advanced-nova-media-library/pull/317)
+
+# How to contribute
+
+- You need to have Nova installed of course in your Laravel app
+- Work directly in the package in the `vendor` directory (webpack needs Nova to be installed)
+- Then from the `vendor/xxx/advanced-nova-media-library` folder:
+    - Use a least `nvm use 14`
+    - `yarn install` 
+    - `yarn run watch` 
+    - Work hard 🤘
+    - `yarn npm production` when job is finished
+    - Make a PR
